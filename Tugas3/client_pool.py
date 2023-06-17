@@ -37,9 +37,6 @@ if __name__=='__main__':
     items = [None] * n_threads
     pools = []
     pool = ThreadPool(processes=n_threads)
-    for i in range(n_threads):
-        p = pool.map_async(kirim_data, items)
-        pools.append(p)
-    
-    for p in pools:
-        p.wait()
+    p = pool.map_async(kirim_data, items)
+    pools.append(p)
+    p.wait()
